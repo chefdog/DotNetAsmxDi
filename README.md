@@ -4,7 +4,7 @@ Dependency injection with autofac in asp.net webforms and webservices
 ## 2. Introduction
 
 Using autofac to inject Serilog and custom services into asmx and aspx based classes.
-The issue with DI and asp.net webforms is that injection in constructors does ot work.
+The issue with DI and asp.net webforms is that injection in constructors does not work.
 
 ## 3. Examples
 Dependency injection is setup in the Global.asax. I have registered two instances; serilog and a custom service.
