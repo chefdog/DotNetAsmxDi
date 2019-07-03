@@ -31,6 +31,7 @@ namespace WebFormsServicesExample
             builder.Register<ILogger>((c, p) =>
             {
                 return new LoggerConfiguration()
+                    .WriteTo.Elasticsearch()
                     .WriteTo.RollingFile(
                         AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "/Log-{Date}.txt")
                     .CreateLogger();
