@@ -4,7 +4,7 @@ Dependency injection with autofac in asp.net webforms and webservices
 ## 2. Introduction
 
 Using autofac to inject Serilog and custom services into asmx and aspx based classes.
-The issue with DI and asp.net webforms is that injection in constructors does not work.
+The issue with DI and asmx (and/or possibly aspx) is that injection in constructors does not work.
 
 ## 3. Examples
 Dependency injection is setup in the Global.asax. I have registered two instances; serilog and a custom service.
@@ -27,8 +27,14 @@ Serilog is configured to use the rolling file sink. The log files are saved in t
 There is one file for serilog and one for the application. The serilog file is used when something goes wrong with Serilog itself.
 The application log file is the standard file for the application info, warning, exceptions etc.
 
+## 5. Web.config
+For autofac and IIS there are two modules added:
+<add name="ContainerDisposal" type="Autofac.Integration.Web.ContainerDisposalModule, Autofac.Integration.Web" preCondition="managedHandler" />
+<add name="PropertyInjection" type="Autofac.Integration.Web.Forms.PropertyInjectionModule, Autofac.Integration.Web" preCondition="managedHandler" />
 
-## 5. What is next?
+This does not work in IIS 6, see https://autofaccn.readthedocs.io/en/latest/integration/webforms.html#id2
+
+## 6. What is next?
 Moving the serilog setup in a custom service class.
 Moving the autofac integration from asmx to a base class.
 Adding UnitTests
