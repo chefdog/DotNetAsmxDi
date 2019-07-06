@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessServices\AutofacService.cs" />
     <Compile Include="BusinessServices\MyCustomBusinessService.cs" />
     <Compile Include="Interfaces\IBusinessService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,7 +20,7 @@ The result of calling the custom business service is displayed in a asp.net lite
 ### 3.2. ASMX
 LoggingWebService.asmx is the implemented example.
 Implementation within an asmx is a little bit different. The process of injection into properties is not done through an automatic process.
-There is need for a little bit extra code, that is done in the constrcutor.
+There is need for a little bit extra code, that is done in the constructor.
 
 ## 4. Serilog
 Serilog is configured to use the rolling file sink. The log files are saved in the App_Data folder.
@@ -35,7 +35,6 @@ For autofac and IIS there are two modules added:
 This does not work in IIS 6, see https://autofaccn.readthedocs.io/en/latest/integration/webforms.html#id2
 
 ## 6. What is next?
-Moving the serilog setup in a custom service class.
 Moving the autofac integration from asmx to a base class.
 Adding UnitTests
 

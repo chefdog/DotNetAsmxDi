@@ -1,13 +1,9 @@
-﻿using Autofac;
-using Autofac.Integration.Web;
-using Serilog;
+﻿using Autofac.Integration.Web;
 using System;
-using System.IO;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
 using WebFormsServices.BusinessServices;
-using WebFormsServices.Interfaces;
 
 namespace WebFormsServicesExample
 {
@@ -24,21 +20,9 @@ namespace WebFormsServicesExample
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             // Autofac
-            ContainerBuilder builder = new ContainerBuilder();
-            var location = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
-            var file = File.CreateText(location + "\\serilogexceptions.log");
-            Serilog.Debugging.SelfLog.Enable(TextWriter.Synchronized(file));
-            builder.Register<ILogger>((c, p) =>
-            {
-                return new LoggerConfiguration()
-                    .WriteTo.Elasticsearch()
-                    .WriteTo.RollingFile(
-                        AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "/Log-{Date}.txt")
-                    .CreateLogger();
-            }).SingleInstance();
-
-            builder.RegisterType<MyCustomBusinessService>().As<IBusinessService>();
-            _containerProvider = new ContainerProvider(builder.Build());
+            AutofacService autofacService = new AutofacService();
+            autofacService.RegisterServices();
+            _containerProvider = new ContainerProvider(autofacService.ContainerBuilder.Build());
         }
     }
 }
