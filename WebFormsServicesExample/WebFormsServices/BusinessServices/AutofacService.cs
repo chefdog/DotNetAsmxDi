@@ -21,7 +21,7 @@ namespace WebFormsServices.BusinessServices
             ContainerBuilder.Register<ILogger>((c, p) =>
             {
                 return new LoggerConfiguration()
-                    .WriteTo.Elasticsearch()
+                    //.WriteTo.Elasticsearch()
                     .WriteTo.RollingFile(
                         AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "/Log-{Date}.txt")
                     .CreateLogger();
