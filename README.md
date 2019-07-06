@@ -1,5 +1,5 @@
 # 1. DotNetAsmxDi
-Dependency injection with autofac in asp.net webforms and webservices
+Dependency injection (serilog and custom services) with autofac in asp.net webforms and webservices
 
 ## 2. Introduction
 
